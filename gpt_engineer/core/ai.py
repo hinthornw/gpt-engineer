@@ -21,6 +21,7 @@ from langchain.schema import (
 )
 
 from gpt_engineer.core.token_usage import TokenUsageLog
+from langsmith.run_helpers import traceable
 
 # Type hint for a chat message
 Message = Union[AIMessage, HumanMessage, SystemMessage]
@@ -81,6 +82,7 @@ class AI:
         ]
         return self.next(messages, step_name=step_name)
 
+    @traceable()
     def next(
         self,
         messages: List[Message],

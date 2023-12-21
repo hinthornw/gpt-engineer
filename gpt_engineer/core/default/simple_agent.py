@@ -12,6 +12,7 @@ from gpt_engineer.core.default.paths import PREPROMPTS_PATH, memory_path
 from gpt_engineer.core.default.steps import gen_code, gen_entrypoint, improve
 from gpt_engineer.core.files_dict import FilesDict
 from gpt_engineer.core.preprompts_holder import PrepromptsHolder
+from langsmith.run_helpers import traceable
 
 
 class SimpleAgent(BaseAgent):
@@ -59,6 +60,7 @@ class SimpleAgent(BaseAgent):
         files_dict = FilesDict(files_dict | entrypoint)
         return files_dict
 
+    @traceable()
     def improve(
         self,
         files_dict: FilesDict,

@@ -24,6 +24,7 @@ from gpt_engineer.core.default.paths import (
 )
 from gpt_engineer.core.files_dict import FilesDict
 from gpt_engineer.core.preprompts_holder import PrepromptsHolder
+from langsmith import traceable
 
 
 def curr_fn() -> str:
@@ -149,6 +150,7 @@ def incorrect_edit(files_dict: FilesDict, chat: str) -> List[str,]:
     return problems
 
 
+@traceable()
 def improve(
     ai: AI,
     prompt: str,
